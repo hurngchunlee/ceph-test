@@ -4,6 +4,11 @@
 
 - [Ceph Quick Start](http://ceph.com/docs/master/start/)
 - [Using BTRFS with multiple devices](https://btrfs.wiki.kernel.org/index.php/Using_Btrfs_with_Multiple_Devices)
+- [PG calculator](http://ceph.com/pgcalc/)
+
+    - In Ceph, the placement group (PG) is very essential for pool.
+      It should be aligned carefully with the pool size (i.e. # replica of objects), 
+      the number of OSDs and data size. Therefore this link.
 
 ## Architecture
 
