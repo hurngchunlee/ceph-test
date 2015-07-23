@@ -7,10 +7,15 @@
 
 ## Architecture
 
-- node organisation
+- node organisation (initial)
     - admin: dccn-l018
     - mon: dccn-c005
+    - mds: dccn-c005
     - osd: dccn-c035, dccn-c036
+    
+- node orgainsation (additional)
+    - extra mon: dccn-c035
+    - extra mds: dccn-c036 (for CephFS)
     
 - filesystem on osd:
 	- data: multiple disk aggregated into one BTRFS mount
@@ -265,3 +270,25 @@ $ ceph-deploy forgetkeys
 ```
 
 This clean up all keyrings and `ceph.conf` file within the cluster profile folder.
+
+## Adding extra services on nodes
+
+### Adding Monitor nodes
+
+According to the document, the `ceph-deploy` offers an simple command to add new MON to the cluster.
+However, I encounter the issue with it, as some command executed remotely to provision the MON service
+gets stuck.  It causes connection timeout, but nevertheless, the deployment continues to add MON into the cluster.
+
+To clean up the mass leftover by the timeout, I figured out that one should login to the node on which
+the new MON is deployed.  Kill relevant processes (very likely the one with command `ceph-mon`), and restart
+the ceph daemon.  After that, the service seems to be running fine.
+
+__TODO:__ need to try the manual step of adding new MON in the future.
+
+### Adding MDS nodes
+
+MDS (metadata system) node is required for running CephFS, a filesystem interface to Ceph cluster.
+
+```bash
+$ ceph-deploy mds create dccn-c005
+```
