@@ -84,7 +84,7 @@
         $ ssh-copy-id ceph@mentat004
         ```
     
-    - for the convenience, make sure the following configuration in `$HOME/.ssh/config`
+    - for the convenience, one could make the following configuration in `$HOME/.ssh/config`
     
         ```bash
         Host mentat004
@@ -133,5 +133,3 @@
     ```
     
     where `dccn-c005` is one of the __MON__ (yes, it's __MON__, not __MDS__) in the cluster.
-
-    
