@@ -7,7 +7,7 @@
  - dccn-c005
  - dccn-c036
 
-## Clients
+## CephFS Clients
  - mentat004
  - dccn-c029 - dccn-c034
  - dccn-c350 - dccn-c354
@@ -133,3 +133,34 @@
     ```
     
     where `dccn-c005` is one of the __MON__ (yes, it's __MON__, not __MDS__) in the cluster.
+    
+## Remarks
+
+- ACL doesn't seem to be supported in current kernel.  According to reports on internet, it will be available in kernel 3.14 onwards ... The ACL it supports is in the POSIX-style.
+
+- first performance test using `dd` to put data into CephFS, with comparison to local disk.
+
+    - Test host: `mentat004`
+    
+    - Test command
+    
+        ```bash
+        $ dd if=/dev/zero of=/mnt/cephfs/test/zero.$$ bs=1024 count=<N>
+        ```
+        
+        where `<N>` is listed in the result table below.
+        
+    - Test result
+
+    | size    |  <N>       | CephFS    | Local disk (ext4) |
+    | -------:| ----------:|----------:| -----------------:|
+    | 1 KB    |  1         | 22.7 KB/s | 5.6 MB/s          |
+    | 4 KB    |  4         | 3.7 MB/s  | 32.9 MB/s         |
+    | 100 KB  |  100       | 33 MB/s   | 140 MB/s          |
+    | 1 MB    |  1024      | 178 MB/s  | 182 MB/s          |
+    | 4 MB    |  4096      | 283 MB/s  | 196 MB/s          |
+    | 16 MB   |  16384     | 345 MB/s  | 252 MB/s          |
+    | 512 MB  |  524288    | 795 MB/s  | 474 MB/s          |
+    | 1 GB    |  1048576   | 837 MB/s  | 499 MB/s          |
+    | 2 GB    |  2097152   | 857 MB/s  | 500 MB/s          |
+    | 4 GB    |  4194304   | 869 MB/s  | 503 MB/s          |
