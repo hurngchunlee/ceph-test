@@ -147,14 +147,14 @@
     Here we assume on dccn-c035 and dccn-c036, `/dev/sdb` is the SSD, while 
     `/dev/sd[c-e]` are HDD's.
     
-    The following command will create an OSD on dccn-c005
+    The following commands will create an OSD on dccn-c035 and dccn-c036
     with data located on `/dev/sdc` and journal on `/dev/sdb`.  The size of journal
     will be `60 GB` as specified in the `ceph.conf` file.  Proper journal size 
     calculation follows [this recommendation](http://ceph.com/docs/master/rados/configuration/osd-config-ref/#journal-settings).
 
     ```bash
-    $ ceph-deploy osd prepare -f dccn-c035:/dev/sdc:/dev/sdb
-    $ ceph-deploy osd prepare -f dccn-c036:/dev/sdc:/dev/sdb
+    $ ceph-deploy osd prepare --fs-type btrfs dccn-c035:/dev/sdc:/dev/sdb
+    $ ceph-deploy osd prepare --fs-type btrfs dccn-c036:/dev/sdc:/dev/sdb
     ```
 
 - activate OSD
@@ -215,6 +215,12 @@
 
     ```bash
     $ ceph-deploy admin dccn-l018 dccn-c005 dccn-c035 dccn-c036
+    ```
+
+- no the management node, make sure the keyring of client.admin is readable for the `ceph` user 
+
+    ```bash
+    $ sudo chmod +x /etc/ceph/ceph.client.admin.keyring
     ```
     
 ## Check ceph cluster status
