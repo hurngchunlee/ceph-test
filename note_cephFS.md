@@ -164,3 +164,13 @@
         | 1 GB    |  1048576   | 837 MB/s  | 499 MB/s          |
         | 2 GB    |  2097152   | 857 MB/s  | 500 MB/s          |
         | 4 GB    |  4194304   | 869 MB/s  | 503 MB/s          |
+        
+- scalability test with torque cluster
+
+    - test command
+    
+        ```bash
+        echo 'dd if=/dev/zero of=/mnt/cephfs/test/zero.$$ bs=1024 count=2097152' | qsub -N 'cephfs_2gb_n2' -t 1-2 -q test -l nodes=dccn-c032.dccn.nl,walltime=00:10:00,mem=3gb
+        ```
+        
+    - results
