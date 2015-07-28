@@ -185,7 +185,7 @@
         ```bash
         $ parted /dev/sdd mklabel gpt
         $ parted /dev/sdd mkpart primary 0% 100%
-        $ btrfs device add /dev/sdd1 /var/lib/ceph/osd/ceph-0
+        $ btrfs device add -f /dev/sdd1 /var/lib/ceph/osd/ceph-0
         ```
             
     - repeat above commands for `/dev/sde`
