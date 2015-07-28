@@ -220,7 +220,7 @@
 - no the management node, make sure the keyring of client.admin is readable for the `ceph` user 
 
     ```bash
-    $ sudo chmod +x /etc/ceph/ceph.client.admin.keyring
+    $ sudo chmod +r /etc/ceph/ceph.client.admin.keyring
     ```
     
 ## Check ceph cluster status
