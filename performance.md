@@ -11,10 +11,10 @@
 - OSD hosts:
     
     - dccn-c035 (10Gb nic)
-        - osd.[0-2]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
+        - osd.[0-2]: btrfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
             
     - dccn-c036 (10Gb nic)
-        - osd.[3-6]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
+        - osd.[3-6]: btrfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
 
 ## Ceph configuration (ceph.conf)
 
