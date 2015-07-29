@@ -41,3 +41,57 @@ osd mkfs options xfs = -f -i size=2048
 osd mount options xfs = rw,noatime,inode64,logbsize=256k,delaylog
 osd op threads = 16
 ```
+
+## Results
+
+# rados benchmark
+
+- writing
+
+    ```bash
+    $ rados -p rbd bench 30 write --no-cleanup
+    ---- >8 -----
+    Total writes made:      1070
+    Write size:             4194304
+    Bandwidth (MB/sec):     140.801 
+
+    Stddev Bandwidth:       27.6258
+    Max bandwidth (MB/sec): 160
+    Min bandwidth (MB/sec): 0
+    Average Latency:        0.454223
+    Stddev Latency:         0.0790595
+    Max latency:            0.747938
+    Min latency:            0.0756266
+    ```
+- sequencial read
+
+    ```bash
+    $ rados -p rbd bench 30 seq -no-cleanup
+    ----- >8 -----
+    Total reads made:     1021
+    Read size:            4194304
+    Bandwidth (MB/sec):    1114.696 
+
+    Average Latency:       0.0572172
+    Max latency:           0.415066
+    Min latency:           0.00980005
+    ```
+    
+- random read
+
+    ```bash
+    $ rados -p rbd bench 30 rand --no-cleanup
+    Total reads made:     8428
+    Read size:            4194304
+    Bandwidth (MB/sec):    1121.071 
+
+    Average Latency:       0.057057
+    Max latency:           0.419418
+    Min latency:           0.00965817
+    ```
+    
+- cleanup
+
+    ```bash
+    $ rados -p rdb cleanup
+    ```
