@@ -42,9 +42,13 @@ osd mount options xfs = rw,noatime,inode64,logbsize=256k,delaylog
 osd op threads = 16
 ```
 
-## Results
+## Rados benchmark
 
-# rados benchmark
+The benchmark used default block size (4MB) and threads (16). Both sequential and random reads reach the network bandwidth of 10Gb,
+while the writing performance is limited by the SSD sequentical write speed.  It confirms the recommendation that if one SSD is shared
+for multiple OSD's for journal, the SSD needs to have good sequential writing speed. 
+
+Given the 10K disk for data is limited by 200 MB/s continuous writing rate, it would be good to have 2 10k disks sharing a 400 MB/s seq-write SSD for journaling.
 
 - writing
 
