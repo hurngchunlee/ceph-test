@@ -1,17 +1,20 @@
 # Note on Ceph performance
 
 ## Reference
-    - [SSD sequential write test](http://www.sebastien-han.fr/blog/2014/10/10/ceph-how-to-test-if-your-ssd-is-suitable-as-a-journal-device/)
-    - [Intel SSDSC2BB12 speed](http://www.intel.com/content/www/us/en/solid-state-drives/solid-state-drives-dc-s3500-series.html), note the sequencial write speed of 135 MB/s.
+- [SSD sequential write test](http://www.sebastien-han.fr/blog/2014/10/10/ceph-how-to-test-if-your-ssd-is-suitable-as-a-journal-device/)
+- [Intel SSDSC2BB12 speed](http://www.intel.com/content/www/us/en/solid-state-drives/solid-state-drives-dc-s3500-series.html), note the sequencial write speed of 135 MB/s.
  
 ## System configuration
  
-    - MON: dccn-c005 (1Gb nic)
-    - OSD hosts:
-        - dccn-c035 (10Gb nic)
-            - osd.[0-2]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
-        - dccn-c036 (10Gb nic)
-            - osd.[3-6]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
+- MON: dccn-c005 (1Gb nic)
+    
+- OSD hosts:
+    
+    - dccn-c035 (10Gb nic)
+        - osd.[0-2]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
+            
+    - dccn-c036 (10Gb nic)
+        - osd.[3-6]: xfs, 1.2 TB (SEAGATE ST1200MM0088), journal on partition of a shared SSD (Intel SSDSC2BB12).
 
 ## Ceph configuration (ceph.conf)
 
