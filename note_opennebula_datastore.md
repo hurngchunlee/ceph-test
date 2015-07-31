@@ -40,3 +40,25 @@ except the following two things:
     ```
     could not open disk image rbd:one/one-17-56-0:id=libvirt:key=xxxxxxxxxxxxxxxxxxxxxx==:auth_supported=cephx\;none:mon_host=dccn-c005\:6789\;dccn-c035\:6789: Invalid argument
     ```
+    
+## Handy instructions
+
+- Resize VM image on RBD level
+
+    Sometimes, it's necessary to resize VM image.
+    
+    1. shutdown the VMs that are using the image.
+    
+    2. On the RBD level, use the following command to change the RBD size
+    
+        ```bash
+        $ rbd --pool one --image one-21 resize --size 524288
+        ```
+    
+    3. restart the VMs
+    
+    Note that the image metadata in OpenNebula is not changed ... this due to the fact that the image resizing feature is not yet supported.
+    See [this post](http://dev.opennebula.org/issues/1727) in which some community patches are available.
+    
+    Through `qemu-img` and `virsh` commands, it's also possible to resize image size at the VM runtime.
+    See [this wiki](http://wiki.skytech.dk/index.php/Ceph_-_howto,_rbd,_lvm,_cluster#Online_resizing_of_KVM_images_.28rbd.29) for the instructions.
