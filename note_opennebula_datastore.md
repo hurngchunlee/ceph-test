@@ -10,25 +10,25 @@
 The above two sets of instructions are helpful. Following them can almost get things right,
 except the following two things:
 
-    1. configuring cephx authentication
+1. configuring cephx authentication
 
-        The `virsh` commands for setting up security key and value should be done with `root`. Running
-        it just using `oneadmin` account will cause the error:
+    The `virsh` commands for setting up security key and value should be done with `root`. Running
+    it just using `oneadmin` account will cause the error:
 
-        ```
-        error: internal error rbd username 'libvirt' specified but secret not found
-        ```
+    ```
+    error: internal error rbd username 'libvirt' specified but secret not found
+    ```
         
-    2. The qemu-kvm package should be built to support rbd, one can check it with the command
+2. The qemu-kvm package should be built to support rbd, one can check it with the command
     
-        ```bash
-        $ qemu-img -h
-        ```
+    ```bash
+    $ qemu-img -h
+    ```
         
-        and look at the very bottom of the output, mentioning the supported formats.
+    and look at the very bottom of the output, mentioning the supported formats.
         
-        If the `rbd` format is not in the list, for CentOS systems, one could update the `qemu-kvm` RPM package using the
-        [ovirt repository](http://www.ovirt.org/Download).
+    If the `rbd` format is not in the list, for CentOS systems, one could update the `qemu-kvm` RPM package using the
+    [ovirt repository](http://www.ovirt.org/Download).
 
 ## Issues
 
