@@ -1,0 +1,1 @@
+# Ceph Management Interface (Calamari) Installation Note
