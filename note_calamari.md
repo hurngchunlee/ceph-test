@@ -31,6 +31,9 @@ to be opened to allow salt clients (running on ceph nodes) to communicate with t
 - Open up firewall
 
     ```bash
-    $ firewall-cmd --permanent --zone=<zone> --add-port=4505-4506/tcp
+    $ firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
+    $ firewall-cmd --permanent --zone=public --add-port=2003/tcp
+    $ firewall-cmd --permanent --zone=public --add-port=2004/tcp
+    $ firewall-cmd --permanent --zone=public --add-port=80/tcp
     $ firewall-cmd --reload
     ```
