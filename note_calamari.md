@@ -37,3 +37,31 @@ to be opened to allow salt clients (running on ceph nodes) to communicate with t
     $ firewall-cmd --permanent --zone=public --add-port=80/tcp
     $ firewall-cmd --reload
     ```
+    
+### Services on Ceph nodes (Salt-minion and Diamond)
+
+```bash
+$ cp /etc/diamond/diamond.conf.example /etc/diamond/diamond.conf
+
+$ cat /etc/salt/minion
+master: ontest003.dccn.nl
+
+$ service salt-minion restart
+$ service diamond restart
+```
+
+On OSD nodes, enable OSD status report
+
+```bash
+$ cat /etc/diamond/collectors/CephCollector.conf | grep osd_stats
+osd_stats_enabled = True
+```
+
+### Services on Calamari server
+
+```bash
+$ cp /etc/diamond/diamond.conf.example /etc/diamond/diamond.conf
+
+$ service salt-server restart
+$ service diamond restart
+```
