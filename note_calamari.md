@@ -65,3 +65,9 @@ $ cp /etc/diamond/diamond.conf.example /etc/diamond/diamond.conf
 $ service salt-server restart
 $ service diamond restart
 ```
+
+## Known Issues
+
+- [Salt issue 24613](https://github.com/saltstack/salt/issues/24613)
+
+    This issue causes 500 Server Error and the OSD map info not reported properly.
