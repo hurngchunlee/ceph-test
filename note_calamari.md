@@ -66,6 +66,20 @@ $ service salt-server restart
 $ service diamond restart
 ```
 
+There are also services controlled by `supervisor`:
+
+```bash
+$ supervisorctl status
+carbon-cache                     STOPPED    Aug 03 10:28 PM
+cthulhu                          STOPPED    Aug 03 10:28 PM
+```
+
+```bash
+$ supervisorctl start all
+cthulhu: started
+carbon-cache: started
+```
+
 ## Known Issues
 
 - [Salt issue 24613](https://github.com/saltstack/salt/issues/24613)
