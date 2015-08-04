@@ -14,7 +14,7 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
     
 ## Building Calamari service package
 
-- get source codes of calamari and diamond (calamari branch)
+- Get source codes of calamari and diamond (calamari branch)
 
     ```bash
     $ mkdir /tmp/calamari-repo
@@ -23,7 +23,7 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
     $ git clone https://github.com/ceph/Diamond.git --branch=calamari
     ```
     
-- build binary on a target VM via vagrant
+- Boot up VM w/ targeting system via vagrant
 
     __Note__: at this stage, one needs [vagrant](https://www.vagrantup.com) and
     a VM driver (the simplest one is [VirtualBox](https://www.virtualbox.org)) installed in the system.
@@ -33,8 +33,8 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
     $ vagrant up
     ```
     
-    For some reason, the salt-minion configuration file is not copied over via SSH.  You will see
-    errors regarding to this at the end of the `vagrant up` command.  We will modify it manually later.
+    > For some reason, the salt-minion configuration file is not copied over via SSH.  You will see
+    > errors regarding to this at the end of the `vagrant up` command.  We will modify it manually later.
     
     Firstly connect to the VM via
     
@@ -49,37 +49,126 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
     file_client: local
     ```
     
-- build calamari-server RPMs
+- Build calamari-server RPMs
 
-Do it within the VM.  Run the following command:
-
-```bash
-$ sudo salt-call state.highstate
-```
-
-If everything runs fine, you will get the following packages on the host's `/tmp/calamari-repo` directory:
-
-```
-calamari-repo-el7.tar.gz
-calamari-server-1.3.0.1-74_g57e4860.el7.x86_64.rpm
-calamari-server-debuginfo-1.3.0.1-74_g57e4860.el7.x86_64.rpm
-diamond-3.4.67-0.noarch.rpm
-diamond-3.4.67-0.src.rpm
-```
+    Do it within the VM.  Run the following command:
+    
+    ```bash
+    $ sudo salt-call state.highstate
+    ```
+    
+    If everything runs fine, you will get the following packages on the host's `/tmp/calamari-repo` directory:
+    
+    ```
+    calamari-repo-el7.tar.gz
+    calamari-server-1.3.0.1-74_g57e4860.el7.x86_64.rpm
+    calamari-server-debuginfo-1.3.0.1-74_g57e4860.el7.x86_64.rpm
+    diamond-3.4.67-0.noarch.rpm
+    diamond-3.4.67-0.src.rpm
+    ```
+    
+    > Build in the `centos6-build` has a problematic dependency file `salt/roots/build_deps.sls`.
+    > In centos6, there does not exist package called `selinux-policy-core`.  Remove this line and
+    > replace with `selinux-policy`, `selinux-policy-doc` and `policycoreutils`.
 
 ## Building Calamari client package
 
+- Get source code from github
+
+    ```bash
+    $ cd /tmp/calamari-repo
+    $ git clone https://github.com/ceph/romana.git
+    $ cd romana
+    ```
+    
+    > The calamari-client is recently renamed to romana. Therefore we check out the latest
+    > version via the romana repository.
+    
+- Boot up VM w/ Ubuntu precise via vagrant
+
+    > Build within Ubuntu precise is needed as it's the most reliable procedure. 
+    > It will build the `deb` package together with a software tarball that can be
+    > used in other systems (e.g. CentOS).
+    
+    Before we boot up the VM, the following steps should be taken to overcome
+    [this issue](https://github.com/saltstack/salt-bootstrap/issues/637).
+    
+    1. replace the `URL` in `vagrant/urllib-bootstrap-salt.sh` with
+    
+        ```bash
+        https://raw.githubusercontent.com/saltstack/salt-bootstrap/develop/bootstrap-salt.sh
+        ```
+        
+    2. add the following line in `vagrant/precise-build/Vagrantfile`
+    
+        ```bash
+        salt.bootstrap_options = "-P"
+        ```
+        
+    Boot up the VM with
+    
+    ```bash
+    $ cd vagrant/precise-build
+    $ vagrant up
+    ```
+    
+    Login to the VM with
+    
+    ```bash
+    $ vagrant ssh
+    ```
+    
+    The same as building `calamari-server`, here we also need to configure `/etc/salt/minion` manaully.
+    
+- Build calamari-server (romana) packages
+
+    Install dependencies:
+    
+    ```bash
+    $ sudo apt-get install ruby1.9.1 ruby1.9.1-dev python-software-properties g++ make git debhelper build-essential devscripts
+
+    $ sudo apt-add-repository http://ppa.launchpad.net/chris-lea/node.js/ubuntu
+    $ sudo apt-get update
+    $ sudo apt-get install nodejs
+    $ sudo npm install -g bower@1.3.8
+    $ sudo npm install -g grunt-cli
+    $ sudo gem install compass
+    ```
+    
+    Build the packages
+    
+    ```bash
+    $ sudo salt-call state.highstate
+    ```
+    
+    Upon success, the following packages will be presented in host's `/tmp/calamari-repo`
+    
+    ```bash
+    calamari-clients_1.2.2-32-g931ee58_all.deb
+    calamari-clients-build-output.tar.gz
+    ```
+    
 ## Installation
+
+### Calamari server
+
+The server has to run on a machine on which the Ceph client can operate.  For example, one should be
+able to do `ceph -s` on this machine.  From the ceph management node, one could use the following
+commands to deploy a ceph client (`ontest003` in this example):
+
+```bash
+$ ceph-deploy install ontest003
+$ ceph-deploy admin ontest003
+```
 
 ### Using the repository tarball generated from the build
 
-__Note__: the salt-master RPM is only available if EPEL repo for CentOS is enabled.
-Hereafter is an example for enabling EPEL for CentOS7.
+- Install salt-master RPM from the EPEL repo. Hereafter is an example for enabling EPEL for CentOS7.
 
-```bash
-$ wget https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-$ sudo yum install epel-release-7-5.noarch.rpm
-```
+    ```bash
+    $ wget https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+    $ sudo yum install epel-release-7-5.noarch.rpm
+    ```
 
 ### Firewall on calamari-server 
 
