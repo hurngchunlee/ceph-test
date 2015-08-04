@@ -104,19 +104,19 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
         ```bash
         salt.bootstrap_options = "-P"
         ```
-        
-    Boot up the VM with
     
-    ```bash
-    $ cd vagrant/precise-build
-    $ vagrant up
-    ```
+    3. Boot up the VM with
     
-    Login to the VM with
+        ```bash
+        $ cd vagrant/precise-build
+        $ vagrant up
+        ```
     
-    ```bash
-    $ vagrant ssh
-    ```
+    4. Login to the VM with
+    
+        ```bash
+        $ vagrant ssh
+        ```
     
     The same as building `calamari-server`, here we also need to configure `/etc/salt/minion` manaully.
     
