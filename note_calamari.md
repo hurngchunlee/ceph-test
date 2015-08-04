@@ -93,30 +93,30 @@ RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the d
     Before we boot up the VM, the following steps should be taken to overcome
     [this issue](https://github.com/saltstack/salt-bootstrap/issues/637).
     
-    1. replace the `URL` in `vagrant/urllib-bootstrap-salt.sh` with
+    - replace the `URL` in `vagrant/urllib-bootstrap-salt.sh` with
     
         ```bash
         https://raw.githubusercontent.com/saltstack/salt-bootstrap/develop/bootstrap-salt.sh
         ```
         
-    2. add the following line in `vagrant/precise-build/Vagrantfile`
+    - add the following line in `vagrant/precise-build/Vagrantfile`
     
         ```bash
         salt.bootstrap_options = "-P"
         ```
     
-    3. Boot up the VM with
+    Boot up the VM with
     
-        ```bash
-        $ cd vagrant/precise-build
-        $ vagrant up
-        ```
+    ```bash
+    $ cd vagrant/precise-build
+    $ vagrant up
+    ```
     
-    4. Login to the VM with
+    Login to the VM with
     
-        ```bash
-        $ vagrant ssh
-        ```
+    ```bash
+    $ vagrant ssh
+    ```
     
     The same as building `calamari-server`, here we also need to configure `/etc/salt/minion` manaully.
     
