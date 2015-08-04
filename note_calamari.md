@@ -161,22 +161,63 @@ $ ceph-deploy install ontest003
 $ ceph-deploy admin ontest003
 ```
 
-### Using the repository tarball generated from the build
-
-- Install salt-master RPM from the EPEL repo. Hereafter is an example for enabling EPEL for CentOS7.
+- Prepare RPM repo from the build
 
     ```bash
-    $ wget https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-    $ sudo yum install epel-release-7-5.noarch.rpm
+    $ mkdir /tmp/calamari/repo
+    $ cd /tmp/calamari/repo
+    $ tar xvzf calamari-repo-el7.tar.gz
     ```
 
-### Firewall on calamari-server 
+    > note that the subdirectory may be called `el6` in the tarball even though the tarball is built
+    > in a CentOS7 system.  Just rename it if this is the case.
 
-If the machine running calamari-server has firewall in place, extra tcp ports need
-to be opened to allow salt clients (running on ceph nodes) to communicate with the server.
+    Create the yum repository file `/etc/yum.repos.d/ceph-calamari.repo` with the following content:
 
-- Open up firewall
+    ```bash
+    [Calamari]
+    name = Ceph Calamari
+    baseurl = file:///tmp/calamari/repo/el7
+    enabled = 1
+    gpgcheck = 0
+    protect = 1
+    ```
 
+- Install the 2014.x version of salt available in `calamari_build/el7` directory of this repository
+
+    __DO NOT__ use the one from the RPM repo (version 2015.x), it is know to be problematic with calamari.
+
+    ```bash
+    $ sudo rpm -ivh salt-2014.7.5-1.el7.noarch.rpm salt-master-2014.7.5-1.el7.noarch.rpm
+    ```
+
+- Install calamari-server RPMs
+
+    ```bash
+    $ sudo yum install -y calamari-server-1.3.0.1-74_g57e4860.el7.centos.x86_64.rpm
+    $ sudo yum install -y diamond-3.4.67-0.noarch.rpm
+    ```
+
+- Extract calamari-client tarball into `/opt` directory
+
+    ```bash
+    $ cd /
+    $ sudo tar xvzf calamari-clients-build-output.tar.gz
+    ```
+
+- Start calamari server
+
+    ```bash
+    $ sudo calamari-ctl initialize
+    ```
+    
+    In this step, it will ask the administor username/password that will be used to login from the browser.
+
+- Open firewall
+
+    If the machine running calamari-server has firewall in place, extra tcp ports need
+    to be opened to allow salt clients (running on ceph nodes) to communicate with the server.
+    
     ```bash
     $ firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
     $ firewall-cmd --permanent --zone=public --add-port=2003/tcp
