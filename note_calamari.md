@@ -7,7 +7,65 @@
     Follow the guide thoroughly, it's pretty much complete.  This note is to add
     points to complement this survival guide.
     
+## Binary packages for CentOS6 and CentOS7
+
+RPM packages prebuilt for CentOS6 and CentOS7 systems are available within the directory
+`calamari_build` within this repository.
+    
 ## Building Calamari service package
+
+- get source codes of calamari and diamond (calamari branch)
+
+    ```bash
+    $ mkdir /tmp/calamari-repo
+    $ cd /tmp/calamari-repo
+    $ git clone https://github.com/ceph/calamari.git
+    $ git clone https://github.com/ceph/Diamond.git --branch=calamari
+    ```
+    
+- build binary on a target VM via vagrant
+
+    __Note__: at this stage, one needs [vagrant](https://www.vagrantup.com) and
+    a VM driver (the simplest one is [VirtualBox](https://www.virtualbox.org)) installed in the system.
+    
+    ```bash
+    $ cd calamari/vagrant/centos7-build
+    $ vagrant up
+    ```
+    
+    For some reason, the salt-minion configuration file is not copied over via SSH.  You will see
+    errors regarding to this at the end of the `vagrant up` command.  We will modify it manually later.
+    
+    Firstly connect to the VM via
+    
+    ```bash
+    $ vagrant ssh
+    ```
+    
+    Modify `/etc/salt/minion` with the following content
+    
+    ```bash
+    master: localhost
+    file_client: local
+    ```
+    
+- build calamari-server RPMs
+
+Do it within the VM.  Run the following command:
+
+```bash
+$ sudo salt-call state.highstate
+```
+
+If everything runs fine, you will get the following packages on the host's `/tmp/calamari-repo` directory:
+
+```
+calamari-repo-el7.tar.gz
+calamari-server-1.3.0.1-74_g57e4860.el7.x86_64.rpm
+calamari-server-debuginfo-1.3.0.1-74_g57e4860.el7.x86_64.rpm
+diamond-3.4.67-0.noarch.rpm
+diamond-3.4.67-0.src.rpm
+```
 
 ## Building Calamari client package
 
