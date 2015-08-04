@@ -85,3 +85,8 @@ carbon-cache: started
 - [Salt issue 24613](https://github.com/saltstack/salt/issues/24613)
 
     This issue causes 500 Server Error and the OSD map info not reported properly.
+    A workaround is to downgrade salt to 2014 version on the calamari server.
+    
+    ```bash
+    $ rpm -Uvh --oldpackage salt-2014.7.5-1.el7.noarch.rpm  salt-minion-2014.7.5-1.el7.noarch.rpm salt-master-2014.7.5-1.el7.noarch.rpm
+    ```
