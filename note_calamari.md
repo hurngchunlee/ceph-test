@@ -2,7 +2,7 @@
 
 ## References
 
-- [CEPH CALAMARI : THE SURVIVAL GUIDE](https://ceph.com/category/calamari/)
+- [CEPH CALAMARI : THE SURVIVAL GUIDE](http://karan-mj.blogspot.nl/2014/09/ceph-calamari-survival-guide.html)
 
     Follow the guide thoroughly, it's pretty much complete.  This note is to add
     points to complement this survival guide.
