@@ -1,0 +1,25 @@
+randr: (groupid=0, jobs=32): err= 0: pid=31174: Tue Feb 18 21:08:54 2020
+  read: IOPS=2108, BW=16.5MiB/s (17.3MB/s)(4942MiB/300069msec)
+    slat (usec): min=22, max=784, avg=49.06, stdev=11.25
+    clat (usec): min=421, max=390138, avg=15124.59, stdev=14222.16
+     lat (usec): min=465, max=390184, avg=15173.82, stdev=14222.14
+    clat percentiles (usec):
+     |  1.00th=[   594],  5.00th=[  4424], 10.00th=[  7111], 20.00th=[  8717],
+     | 30.00th=[  9634], 40.00th=[ 10290], 50.00th=[ 11469], 60.00th=[ 13042],
+     | 70.00th=[ 15008], 80.00th=[ 17695], 90.00th=[ 23462], 95.00th=[ 34341],
+     | 99.00th=[ 87557], 99.50th=[ 93848], 99.90th=[113771], 99.95th=[126354],
+     | 99.99th=[183501]
+   bw (  KiB/s): min= 7680, max=24784, per=100.00%, avg=16889.46, stdev=87.25, samples=19168
+   iops        : min=  960, max= 3098, avg=2111.16, stdev=10.91, samples=19168
+  lat (usec)   : 500=0.03%, 750=3.51%, 1000=0.36%
+  lat (msec)   : 2=0.27%, 4=0.60%, 10=31.17%, 20=49.49%, 50=11.15%
+  lat (msec)   : 100=3.12%, 250=0.30%, 500=0.01%
+  cpu          : usr=0.02%, sys=0.26%, ctx=1171913, majf=0, minf=7751
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=632610,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=16.5MiB/s (17.3MB/s), 16.5MiB/s-16.5MiB/s (17.3MB/s-17.3MB/s), io=4942MiB (5182MB), run=300069-300069msec

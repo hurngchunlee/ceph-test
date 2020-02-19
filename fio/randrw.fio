@@ -1,0 +1,7 @@
+[global]
+include glob-include.fio
+
+[randrw]
+rw=randrw
+rwmixread=${RREAD}
+rwmixwrite=${RWRITE}

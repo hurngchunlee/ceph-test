@@ -1,0 +1,5 @@
+[global]
+include glob-include.fio
+
+[randw]
+rw=randwrite

@@ -1,0 +1,9 @@
+[global]
+include glob-include.fio
+
+[seqw]
+rw=write
+size=${SIZE}
+
+[seqr]
+rw=read

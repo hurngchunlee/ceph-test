@@ -1,0 +1,11 @@
+; this job profile is used to create data for test
+[global]
+include glob-include.fio
+
+[seqr]
+rw=read
+
+[randrw]
+rw=randrw
+rwmixread=${RREAD}
+rwmixwrite=${RWRITE}
