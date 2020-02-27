@@ -12,7 +12,7 @@ d_cephfs_randr_1m <- subset(data_cephfs, iotype == "randr" & fsize == "1m")
 d_cephfs_seqr_1m  <- subset(data_cephfs, iotype == "seqr"  & fsize == "1m")
 
 # dataset for NetApp
-data_netapp <- read.csv("netapp.csv")
+data_netapp <- read.csv("netapp_hiqos.csv")
 
 d_netapp_randr_2g <- subset(data_netapp, iotype == "randr" & fsize == "2g")
 d_netapp_seqr_2g  <- subset(data_netapp, iotype == "seqr"  & fsize == "2g")
