@@ -53,6 +53,6 @@ target=$1
 echo 'sys,iotype,fsize,bsize,n_jobs,n_hosts,n_jobs_total,bwidth,iops,lat_mean_ns,lat_stdv_ns'
 
 # CSV data
-for f in $target/out/*; do
+for f in $target/out/*.json; do
     echo ${target},$( json2csv $f )
 done
