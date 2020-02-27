@@ -1,0 +1,15 @@
+time_based
+#thread
+runtime=300
+ramp_time=20
+group_reporting
+per_job_logs=0
+ioengine=libaio
+iodepth=1
+direct=1
+directory=/cephfs/layout_su${FS_STRIPE_UNIT}_o${FS_OBJECT_SIZE}
+#directory=/project/3055010.01/fio
+filesize=${SIZE}
+bs=${BSIZE}
+numjobs=${NJOBS}
+filename_format=${HOSTNAME}.$jobname.$jobnum.$filenum

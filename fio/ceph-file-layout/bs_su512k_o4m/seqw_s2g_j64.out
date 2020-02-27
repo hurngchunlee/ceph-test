@@ -1,0 +1,90 @@
+seqw: (g=0): rw=write, bs=(R) 64.0KiB-64.0KiB, (W) 64.0KiB-64.0KiB, (T) 64.0KiB-64.0KiB, ioengine=libaio, iodepth=1
+...
+fio-3.18
+Starting 64 threads
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+seqw: Laying out IO file (1 file / 2048MiB)
+
+seqw: (groupid=0, jobs=64): err= 0: pid=71026: Wed Feb 19 21:37:22 2020
+  write: IOPS=12.4k, BW=775MiB/s (813MB/s)(227GiB/300135msec)
+    slat (usec): min=28, max=3517, avg=148.89, stdev=108.97
+    clat (usec): min=3, max=1806.2k, avg=5005.82, stdev=12650.68
+     lat (usec): min=835, max=1806.3k, avg=5154.94, stdev=12652.59
+    clat percentiles (usec):
+     |  1.00th=[  1237],  5.00th=[  1696], 10.00th=[  2008], 20.00th=[  2474],
+     | 30.00th=[  2868], 40.00th=[  3294], 50.00th=[  3818], 60.00th=[  4555],
+     | 70.00th=[  5342], 80.00th=[  6128], 90.00th=[  7111], 95.00th=[  8225],
+     | 99.00th=[ 17433], 99.50th=[ 44303], 99.90th=[166724], 99.95th=[246416],
+     | 99.99th=[488637]
+   bw (  KiB/s): min= 8832, max=1505664, per=100.00%, avg=799304.54, stdev=3748.87, samples=38108
+   iops        : min=  138, max=23526, avg=12489.02, stdev=58.58, samples=38108
+  lat (usec)   : 4=0.01%, 100=0.01%, 250=0.01%, 500=0.01%, 750=0.01%
+  lat (usec)   : 1000=0.11%
+  lat (msec)   : 2=9.65%, 4=42.84%, 10=44.79%, 20=1.74%, 50=0.41%
+  lat (msec)   : 100=0.28%, 250=0.13%, 500=0.04%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2000=0.01%
+  cpu          : usr=0.08%, sys=1.91%, ctx=7608767, majf=0, minf=67651
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,3723591,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=775MiB/s (813MB/s), 775MiB/s-775MiB/s (813MB/s-813MB/s), io=227GiB (244GB), run=300135-300135msec

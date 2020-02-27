@@ -1,0 +1,16 @@
+[global]
+time_based
+runtime=300
+ramp_time=20
+group_reporting
+per_job_logs=0
+ioengine=sync
+iodepth=1
+direct=1
+directory=/project/3010000.01/fio-test
+filesize=1m
+
+[seqr]
+rw=read
+bs=64k
+numjobs=${NJOBS}

@@ -1,0 +1,161 @@
+seqr: (g=0): rw=read, bs=(R) 64.0KiB-64.0KiB, (W) 64.0KiB-64.0KiB, (T) 64.0KiB-64.0KiB, ioengine=libaio, iodepth=1
+...
+fio-3.18
+Starting 128 threads
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+seqr: Laying out IO file (1 file / 2048MiB)
+
+seqr: (groupid=0, jobs=128): err= 0: pid=50506: Fri Feb 21 00:35:35 2020
+  read: IOPS=6956, BW=435MiB/s (456MB/s)(128GiB/300671msec)
+    slat (usec): min=19, max=2321, avg=46.14, stdev=16.40
+    clat (usec): min=2, max=3145.6k, avg=18313.90, stdev=55405.61
+     lat (usec): min=625, max=3145.7k, avg=18360.20, stdev=55406.79
+    clat percentiles (usec):
+     |  1.00th=[    807],  5.00th=[    873], 10.00th=[    922],
+     | 20.00th=[    996], 30.00th=[   1106], 40.00th=[   1516],
+     | 50.00th=[   5932], 60.00th=[   8356], 70.00th=[  10683],
+     | 80.00th=[  16909], 90.00th=[  41681], 95.00th=[  74974],
+     | 99.00th=[ 217056], 99.50th=[ 316670], 99.90th=[ 700449],
+     | 99.95th=[ 943719], 99.99th=[1669333]
+   bw (  KiB/s): min=16179, max=2478997, per=100.00%, avg=463161.25, stdev=2837.45, samples=73846
+   iops        : min=  249, max=38734, avg=7236.80, stdev=44.34, samples=73846
+  lat (usec)   : 4=0.01%, 10=0.01%, 50=0.01%, 250=0.01%, 500=0.01%
+  lat (usec)   : 750=0.16%, 1000=20.10%
+  lat (msec)   : 2=21.49%, 4=3.75%, 10=22.15%, 20=14.22%, 50=9.80%
+  lat (msec)   : 100=4.85%, 250=2.69%, 500=0.57%, 750=0.12%, 1000=0.04%
+  lat (msec)   : 2000=0.04%, >=2000=0.01%
+  cpu          : usr=0.02%, sys=0.24%, ctx=2967069, majf=0, minf=102433
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=2091666,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=435MiB/s (456MB/s), 435MiB/s-435MiB/s (456MB/s-456MB/s), io=128GiB (137GB), run=300671-300671msec
