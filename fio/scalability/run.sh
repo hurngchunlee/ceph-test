@@ -37,6 +37,10 @@ for iot in seqr randr; do
             for h in $(grep -v -e '^#.*' ${hlist}); do
                 echo $passwd | ssh $h sudo -S ${script_cleancache}
             done
+
+            echo "sleep for 10 seconds ..."
+
+            sleep 10
              
             echo -n "[$target] IO type=${iot}, job number=${nhost}x${nj}, file size=${fs} ..."
 
