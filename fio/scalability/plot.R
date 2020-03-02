@@ -3,7 +3,7 @@
 library(ggplot2)
 
 # dataset for CephFS 
-data_cephfs <- read.csv("cephfs.csv")
+data_cephfs <- read.csv("cephfs.csv.default.2")
 
 d_cephfs_randr_2g <- subset(data_cephfs, iotype == "randr" & fsize == "2g")
 d_cephfs_seqr_2g  <- subset(data_cephfs, iotype == "seqr"  & fsize == "2g")
@@ -12,7 +12,7 @@ d_cephfs_randr_1m <- subset(data_cephfs, iotype == "randr" & fsize == "1m")
 d_cephfs_seqr_1m  <- subset(data_cephfs, iotype == "seqr"  & fsize == "1m")
 
 # dataset for NetApp
-data_netapp <- read.csv("netapp_hiqos.csv")
+data_netapp <- read.csv("netapp_qos.csv")
 
 d_netapp_randr_2g <- subset(data_netapp, iotype == "randr" & fsize == "2g")
 d_netapp_seqr_2g  <- subset(data_netapp, iotype == "seqr"  & fsize == "2g")
@@ -32,7 +32,7 @@ p_ofile_prefix <- "p_randr_2g_"
 
 p_randr_iops <- ggplot(data=p_data, mapping=aes(x=n_jobs_total, y=iops, group=sys, colour=sys)) +
                    geom_line() + geom_point(aes(shape=sys)) +
-                   scale_x_discrete(name="#number of jobs", limits=p_data$n_jobs_total) +
+                   scale_x_discrete(name="Number of jobs", limits=p_data$n_jobs_total) +
                    coord_cartesian(xlim = c(0,150)) +
                    ylab("IOPS") +
                    ggtitle(p_title)
@@ -72,7 +72,7 @@ ggsave(plot=p_seqr_bw, width=9, height=6, dpi=600, filename=paste0(p_ofile_prefi
 
 p_seqr_iops <- ggplot(data=p_data, mapping=aes(x=n_jobs_total, y=iops, group=sys, colour=sys)) +
                geom_line() + geom_point(aes(shape=sys)) +
-               scale_x_discrete(name="#number of jobs", limits=p_data$n_jobs_total) +
+               scale_x_discrete(name="Number of jobs", limits=p_data$n_jobs_total) +
                coord_cartesian(xlim = c(0,150)) +
                ylab("IOPS") +
                ggtitle(p_title)
@@ -143,7 +143,7 @@ ggsave(plot=p_seqr_bw, width=9, height=6, dpi=600, filename=paste0(p_ofile_prefi
 
 p_seqr_iops <- ggplot(data=p_data, mapping=aes(x=n_jobs_total, y=iops, group=sys, colour=sys)) +
                geom_line() + geom_point(aes(shape=sys)) +
-               scale_x_discrete(name="#number of jobs", limits=p_data$n_jobs_total) +
+               scale_x_discrete(name="Number of jobs", limits=p_data$n_jobs_total) +
                coord_cartesian(xlim = c(0,150)) +
                ylab("IOPS") +
                ggtitle(p_title)
