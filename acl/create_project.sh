@@ -35,13 +35,22 @@ chmod 2770 $ppath &&
   setfacl -n -m m::rwx $ppath && setfacl -n -d -m m::rwx $ppath &&
   setfacl -m group::-- $ppath && setfacl -d -m group::-- $ppath
 
+## apply quota
+echo -n "quota in GB: "
+read quota
+[[ "$quota" == "" || $quota -lt 1 ]] && echo "invalid quota: $quota" && exit 1
+setfattr -n ceph.quota.max_bytes -v $(($quota*1024*1024*1024)) $ppath || exit 1
+
 ## add initial manager
+## 1. set acl
+## 2. write user.project.managers attribute
 echo -n "comma-separated list of initial manage(s): "
 read uids
 echo
 if [ "$uids" != "" ]; then
     for uid in $(echo $uids | sed 's/,/ /g'); do
-        setfacl -d -m $uid:rwx $ppath && \
-        setfacl -m $uid:rwx $ppath
+        setfacl -d -m $uid:rwx $ppath &&
+          setfacl -m $uid:rwx $ppath &&
+          setfattr -n user.project.managers -v $uids $ppath
     done
 fi
