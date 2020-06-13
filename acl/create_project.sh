@@ -4,10 +4,17 @@
 # files/sub-directories created within it will follow.
 
 [ $# -lt 1 ] && echo "Usage: $0 {pid}" >&2 && exit 1
-
 pid=$1
 
-ppath=/cephfs/data/project/$pid
+# use PROJECT_ROOT to specify the directory in which projects are
+# organized.  For example, the directory for project 3055000.01
+# will `$PROJECT_ROOT/3055000.01`.
+[ ! -z PROJECT_ROOT ] && PROJECT_ROOT=/cephfs/data/project
+
+# The PROJECT_ROOT directory should exist.
+[ ! -d $PROJECT_ROOT ] && echo "directory not found: $PROJECT_ROOT" >&2 && exit 1
+
+ppath=$PROJECT_ROOT/$pid
 
 [ ! -d $ppath ] && mkdir -p $ppath
 
