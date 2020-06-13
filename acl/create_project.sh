@@ -23,17 +23,12 @@ chown project:project_g $ppath
 
 # 1. set project directory mode to rwxrwx--- (770)
 #    the reason the group permission is `rwx` is because of the ACL mask.
-# 2. enable the `setgid` bit on the permission so that new files created on
-#    linux will be owned by the `project_g`. This circumvent the issue that
-#    the acl mask is always synced with group permission; and we need the
-#    acl mask to be `rwx` (see below).
-# 3. set mask to "rwx" for project directory and inherit it to subdirectories.
+# 2. set mask to "rwx" for project directory and inherit it to subdirectories.
 #    mask "rwx" means no acl bit is filtered.
-# 4. remove entire group access as default.
+# 3. remove entire group access as default.
 
-chmod 2770 $ppath && 
-  setfacl -n -m m::rwx $ppath && setfacl -n -d -m m::rwx $ppath &&
-  setfacl -m group::-- $ppath && setfacl -d -m group::-- $ppath
+chmod 770 $ppath && 
+  setfacl -m m::rwx,d:m::rwx,g::--,d:g::-- $ppath
 
 ## apply quota
 echo -n "quota in GB: "
@@ -48,9 +43,10 @@ echo -n "comma-separated list of initial manage(s): "
 read uids
 echo
 if [ "$uids" != "" ]; then
+    acl=""
     for uid in $(echo $uids | sed 's/,/ /g'); do
-        setfacl -d -m $uid:rwx $ppath &&
-          setfacl -m $uid:rwx $ppath &&
-          setfattr -n user.project.managers -v $uids $ppath
+        acl="$uid:rwx,d:$uid:rwx,$acl"
     done
+    setfacl -m $acl $ppath &&
+      setfattr -n user.project.managers -v $uids $ppath
 fi
