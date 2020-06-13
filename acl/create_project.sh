@@ -1,25 +1,40 @@
 #!/bin/bash
-#
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 {projectId}"
-    exit 1
-fi
+# This script setup initial project permission and acl so that the following
+# files/sub-directories created within it will follow.
+
+[ $# -lt 1 ] && echo "Usage: $0 {pid}" >&2 && exit 1
 
 pid=$1
-pdir=/project_cephfs/$pid
 
-mkdir $pdir && \
-chown project.project_g $pdir && \
-chmod 2770 $pdir && \
-setfacl -d -m group::-- $pdir && \
-setfacl -m group::-- $pdir
+ppath=/cephfs/data/project/$pid
+
+[ ! -d $ppath ] && mkdir -p $ppath
+
+# change project directory owned by project and project_g group.
+chown project:project_g $ppath
+
+# 1. set project directory mode to rwxrwx--- (770)
+#    the reason the group permission is `rwx` is because of the ACL mask.
+# 2. enable the `setgid` bit on the permission so that new files created on
+#    linux will be owned by the `project_g`. This circumvent the issue that
+#    the acl mask is always synced with group permission; and we need the
+#    acl mask to be `rwx` (see below).
+# 3. set mask to "rwx" for project directory and inherit it to subdirectories.
+#    mask "rwx" means no acl bit is filtered.
+# 4. remove entire group access as default.
+
+chmod 2770 $ppath && 
+  setfacl -n -m m::rwx $ppath && setfacl -n -d -m m::rwx $ppath &&
+  setfacl -m group::-- $ppath && setfacl -d -m group::-- $ppath
 
 ## add initial manager
-echo -n "initial manager: "
-read uid
+echo -n "comma-separated list of initial manage(s): "
+read uids
 echo
-if [ "$uid" != "" ]; then
-    setfacl -d -m $uid:rwx $pdir && \
-    setfacl -m $uid:rwx $pdir
+if [ "$uids" != "" ]; then
+    for uid in $(echo $uids | sed 's/,/ /'); do
+        setfacl -d -m $uid:rwx $pdir && \
+        setfacl -m $uid:rwx $pdir
+    done
 fi
