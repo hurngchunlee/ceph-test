@@ -40,8 +40,8 @@ echo -n "comma-separated list of initial manage(s): "
 read uids
 echo
 if [ "$uids" != "" ]; then
-    for uid in $(echo $uids | sed 's/,/ /'); do
-        setfacl -d -m $uid:rwx $pdir && \
-        setfacl -m $uid:rwx $pdir
+    for uid in $(echo $uids | sed 's/,/ /g'); do
+        setfacl -d -m $uid:rwx $ppath && \
+        setfacl -m $uid:rwx $ppath
     done
 fi
